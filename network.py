@@ -28,6 +28,9 @@ for iter in range(60000):
 
     l2_error = y - l2 # ???
 
+    if (iter % 10000) == 0:
+        print("Error:" + str(np.mean(np.abs(l2_error))))
+
     l1_delta = l2_error * nonlin(l1,True) # ???
 
     syn0 += np.dot(l0.T,l1_delta) # Update the weights appropriately
