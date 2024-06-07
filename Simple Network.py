@@ -16,15 +16,15 @@ y = np.array([[0,1,1,0]]).T
 np.random.seed(1)
 
 # Randomly weight the values with a mean weight of 0
-syn0 = 2 * np.random.random((3,4)) - 1
-syn1 = 2 * np.random.random((4,1)) - 1
+syn0 = 2 * np.random.random((3,4)) - 1 # Synapse connecting and weighting l0 and l1 values
+syn1 = 2 * np.random.random((4,1)) - 1 # Synapse connecting and weighting l1 and l2 values
 
 # Iterates through
 for iter in range(60000):
 
     l0 = x # Layer 1 of the network, contains the input data
     l1 = nonlin(np.dot(l0,syn0)) # Layer 2 of the network, the 'hidden' layer
-    l2 = nonlin(np.dot(l1,syn1))
+    l2 = nonlin(np.dot(l1,syn1)) # Layer 3 of the network, acts as the hypothesis and approximates the correct answer over time
 
     l2_error = y - l2 # ???
 
