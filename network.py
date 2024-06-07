@@ -31,9 +31,15 @@ for iter in range(60000):
     if (iter % 10000) == 0:
         print("Error:" + str(np.mean(np.abs(l2_error))))
 
-    l1_delta = l2_error * nonlin(l1,True) # ???
+    l2_delta = l2_error * nonlin(l2,deriv=True) # Determines how much to tweak the network based on how close & confident it was to the true value
 
-    syn0 += np.dot(l0.T,l1_delta) # Update the weights appropriately
+    l1_error = l2_delta.dot(syn1.T) # Determines how much each Layer 2 value changed the actual output
+
+    l1_delta = l1_error * nonlin(l1,deriv=True) # Tweaks the layer 2 values based on confidence & direction
+
+    # Update the weights appropriately
+    syn1 += l1.T.dot(l2_delta)
+    syn0 += l0.T.dot(l1_delta) 
 
 print("Output After Traning:")
-print(l1)
+print(l2)
