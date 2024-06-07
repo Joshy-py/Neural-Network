@@ -10,7 +10,7 @@ def nonlin(i, deriv = False):
 x = np.array([[0,0,1], [0,1,1], [1,0,1], [1,1,1]])
 
 # Output dataset
-y = np.array([[0,0,1,1]]).T
+y = np.array([[0,1,1,0]]).T
 
 # Seeds random numbers to ensure calculations are deterministic
 np.random.seed(1)
