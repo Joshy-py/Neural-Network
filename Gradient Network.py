@@ -13,7 +13,7 @@ y = np.array([[0,0,1,1]]).T
 
 np.random.seed(1)
 
-syn0 = 2 * np.random.random(2,1) - 1
+syn0 = 2 * np.random.random((2,1)) - 1
 
 for j in range(10000):
 
